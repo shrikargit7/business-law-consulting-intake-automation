@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PBL Business Intake Demo</title>
+</head>
+<body>
+  <h1>Business Legal Support – Intake</h1>
+
+  <form id="intakeForm">
+    <label>First Name
+      <input type="text" name="first_name" required>
+    </label><br>
+
+    <label>Last Name
+      <input type="text" name="last_name" required>
+    </label><br>
+
+    <label>Email
+      <input type="email" name="email" required>
+    </label><br>
+
+    <label>Phone
+      <input type="tel" name="phone">
+    </label><br>
+
+    <label>Are you looking for legal support for:
+      <select name="support_for" required>
+        <option value="">Select...</option>
+        <option value="Myself">Myself</option>
+        <option value="My company">My company</option>
+        <option value="Another person or company">Another person or company</option>
+      </select>
+    </label><br>
+
+    <label>What type of legal support are you looking for?
+      <select name="support_type" required>
+        <option value="">Select...</option>
+        <option value="Business">Business</option>
+        <option value="Estate and Wills">Estate and Wills</option>
+        <option value="Probate">Probate</option>
+        <option value="Other">Other</option>
+      </select>
+    </label><br>
+
+    <label>How did you hear about us?
+      <select name="hear_about_us" required>
+        <option value="">Select...</option>
+        <option value="Professional advisor">Professional advisor</option>
+        <option value="Referred by current client">Referred by current client</option>
+        <option value="Google">Google</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Instagram">Instagram</option>
+        <option value="LinkedIn">LinkedIn</option>
+      </select>
+    </label><br>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <script>
+    async function submitForm() {
+      const form = document.getElementById('intakeForm');
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const data = {
+        first_name: form.first_name.value,
+        last_name: form.last_name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        support_for: form.support_for.value,
+        support_type: form.support_type.value,
+        hear_about_us: form.hear_about_us.value
+      };
+
+      try {
+        await fetch('https://hooks.zapier.com/hooks/catch/26579923/uv71xfb/', {
+          method: 'POST',
+          body: JSON.stringify(data)
+        });
+        alert('Submitted successfully!');
+        form.reset();
+      } catch (error) {
+        alert('Something went wrong. Please try again.');
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>

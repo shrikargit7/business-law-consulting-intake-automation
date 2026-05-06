@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "version": "gdpr_v1"
+  },
+  "zaps": [
+    {
+      "id": 362627085,
+      "title": "Parr1",
+      "status": "off",
+      "nodes": {
+        "362627085": {
+          "id": 362627085,
+          "account_id": 26461965,
+          "customuser_id": 26579923,
+          "paused": true,
+          "type_of": "read",
+          "params": {},
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {}
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": null,
+          "root_id": null,
+          "action": "hook_v2",
+          "selected_api": "WebHookCLIAPI@1.1.1",
+          "title": "Parr1",
+          "authentication_id": null,
+          "created_at": "2026-05-05T04:01:12+00:00",
+          "last_changed": "2026-05-06T01:58:43+00:00"
+        },
+        "362627086": {
+          "id": 362627086,
+          "account_id": 26461965,
+          "customuser_id": 26579923,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "timezone": false,
+            "drive": "",
+            "spreadsheet": "1Q6FKGvoMha7car29Aug8tszailt2Ki-oieRZx2gGzOs",
+            "worksheet": "0",
+            "COL$A": "=ROW()",
+            "COL$B": "=NOW()",
+            "COL$C": "{{=gives[\"362627085\"][\"first_name\"]}}",
+            "COL$D": "{{=gives[\"362627085\"][\"last_name\"]}}",
+            "COL$E": "{{=gives[\"362627085\"][\"email\"]}}",
+            "COL$F": "{{=gives[\"362627085\"][\"phone\"]}}",
+            "COL$G": "{{=gives[\"362627085\"][\"support_for\"]}}",
+            "COL$H": "{{=gives[\"362627085\"][\"support_type\"]}}",
+            "COL$I": "{{=gives[\"362627085\"][\"hear_about_us\"]}}",
+            "COL$J": "New"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "drive": "My Google Drive",
+              "spreadsheet": "PARR_CRM",
+              "worksheet": "Sheet1"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 362627085,
+          "root_id": 362627085,
+          "action": "add_row",
+          "selected_api": "GoogleSheetsV2CLIAPI@2.12.0",
+          "title": null,
+          "authentication_id": 62220139,
+          "created_at": "2026-05-05T04:01:12+00:00",
+          "last_changed": "2026-05-06T01:57:54+00:00"
+        }
+      }
+    }
+  ]
+}

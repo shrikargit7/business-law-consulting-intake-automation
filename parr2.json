@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "version": "gdpr_v1"
+  },
+  "zaps": [
+    {
+      "id": 362825409,
+      "title": "Parr2",
+      "status": "off",
+      "nodes": {
+        "362825409": {
+          "id": 362825409,
+          "account_id": 26461965,
+          "customuser_id": 26579923,
+          "paused": true,
+          "type_of": "read",
+          "params": {
+            "scorecard_id": "258562"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "scorecard_id": "Parr_test"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": null,
+          "root_id": null,
+          "action": "quizFinished",
+          "selected_api": "ScoreAppCLIAPI@2.0.0",
+          "title": "Parr2",
+          "authentication_id": 63775026,
+          "created_at": "2026-05-06T01:58:55+00:00",
+          "last_changed": "2026-05-06T08:12:02+00:00"
+        },
+        "362828988": {
+          "id": 362828988,
+          "account_id": 26461965,
+          "customuser_id": 26579923,
+          "paused": true,
+          "type_of": "search",
+          "params": {
+            "row_count": "10",
+            "_zap_search_success_on_miss": false,
+            "_zap_search_multiple_results": "first",
+            "drive": "",
+            "spreadsheet": "1Q6FKGvoMha7car29Aug8tszailt2Ki-oieRZx2gGzOs",
+            "worksheet": "0",
+            "lookup_key": "COL$E",
+            "lookup_value": "{{=gives[\"362825409\"][\"email\"]}}"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "drive": "My Google Drive",
+              "spreadsheet": "PARR_CRM",
+              "worksheet": "Sheet1",
+              "lookup_key": "email"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 362825409,
+          "root_id": 362825409,
+          "action": "lookup_row",
+          "selected_api": "GoogleSheetsV2CLIAPI@2.12.0",
+          "title": null,
+          "authentication_id": 62220139,
+          "created_at": "2026-05-06T02:57:12+00:00",
+          "last_changed": "2026-05-06T08:12:02+00:00"
+        },
+        "362828907": {
+          "id": 362828907,
+          "account_id": 26461965,
+          "customuser_id": 26579923,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "drive": "",
+            "spreadsheet": "1Q6FKGvoMha7car29Aug8tszailt2Ki-oieRZx2gGzOs",
+            "worksheet": "0",
+            "row": "{{362828988__id}}",
+            "COL$E": "{{=gives[\"362825409\"][\"email\"]}}",
+            "COL$L": "{{=gives[\"362825409\"][\"answer_4796438\"]}}",
+            "COL$M": "{{=gives[\"362825409\"][\"answer_4796439\"]}}",
+            "COL$N": "{{=gives[\"362825409\"][\"answer_4796440\"]}}",
+            "COL$O": "{{=gives[\"362825409\"][\"answer_4796446\"]}}",
+            "COL$P": "{{=gives[\"362825409\"][\"answer_4796447\"]}}",
+            "COL$Q": "{{=gives[\"362825409\"][\"answer_4796445\"]}}",
+            "COL$R": "{{=gives[\"362825409\"][\"answer_4796448\"]}}",
+            "COL$V": "{{=gives[\"362825409\"][\"answer_4796449\"]}}",
+            "COL$W": "{{=gives[\"362825409\"][\"total_score_percent\"]}}",
+            "COL$X": "{{=gives[\"362825409\"][\"total_score_tier\"]}}",
+            "COL$J": "Stage 2 completed"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "spreadsheet": "PARR_CRM",
+              "worksheet": "Sheet1"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 362828988,
+          "root_id": 362825409,
+          "action": "update_row",
+          "selected_api": "GoogleSheetsV2CLIAPI@2.12.0",
+          "title": null,
+          "authentication_id": 62220139,
+          "created_at": "2026-05-06T02:56:35+00:00",
+          "last_changed": "2026-05-06T08:12:02+00:00"
+        },
+        "362830248": {
+          "id": 362830248,
+          "account_id": 26461965,
+          "customuser_id": 26579923,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "provider_id": "google",
+            "authentication_id": "63775915",
+            "model_id": "google/gemini-2.5-flash",
+            "isOutputArray": false,
+            "content_moderation": false,
+            "inputFields": {
+              "Readiness": "{{=gives[\"362825409\"][\"answer_4796447\"]}}{{=gives[\"362825409\"][\"answer_4796447\"]}}{{=gives[\"362825409\"][\"email\"]}}{{=gives[\"362825409\"][\"full_name\"]}}{{=gives[\"362825409\"][\"total_score_percent\"]}}{{=gives[\"362825409\"][\"total_score_tier\"]}}{{=gives[\"362825409\"][\"answer_4796443[]answer\"]}}{{=gives[\"362825409\"][\"answer_4796437\"]}}{{=gives[\"362825409\"][\"answer_4796438\"]}}{{=gives[\"362825409\"][\"answer_4796439\"]}}{{=gives[\"362825409\"][\"answer_4796440\"]}}{{=gives[\"362825409\"][\"answer_4796441\"]}}{{=gives[\"362825409\"][\"answer_4796442\"]}}{{=gives[\"362825409\"][\"answer_4796444\"]}}{{=gives[\"362825409\"][\"answer_4796445\"]}}{{=gives[\"362825409\"][\"answer_4796446\"]}}"
+            },
+            "inputFieldConfig_Readiness_isImageUrl": false,
+            "inputFieldConfig_Readiness_isFileUrl": false,
+            "outputSchema": {
+              "AIsummary": "{{=gives['362828907'][\"COL$S\"]}}",
+              "AIFlag": "{{=gives['362828907'][\"COL$T\"]}}",
+              "NextStep": "{{=gives['362828907'][\"COL$U\"]}}"
+            },
+            "options_AIsummary": [],
+            "required_AIsummary": true,
+            "type_AIsummary": "text",
+            "required_AIFlag": true,
+            "type_AIFlag": "text",
+            "options_AIFlag": [],
+            "required_NextStep": true,
+            "type_NextStep": "text",
+            "instructions": "You are helping a business law firm prepare an internal intake summary for a new business client.\n\nYou are given the client\u2019s quiz answers about their business structure, owners, contracts, legal priorities, timeline, fee expectations, and an overall readiness score and segment. The answers are provided in the field called \"Readiness\".\n\nUsing ONLY this information, create three separate outputs:\n\nintake_summary: A concise markdown summary with the following five headings and 2\u20134 bullet points under each:\n\nClient & matter overview\n\nBusiness snapshot\n\nKey risks and gaps\n\nClient\u2019s goals and success vision\n\nSuggested next steps (internal)\n\nflags: For the flags field, return a short comma-separated list of lowercase, hyphen-separated tags that are useful for internal triage. Use only these kinds of tags:\nstructural: foundations-needed, mostly-sorted, high-readiness\nownership: single-founder, multi-founder, no-owners-agreement, old-owners-agreement\ncontracts: contracts-needed, few-contracts, contracts-in-place, low-contract-confidence\njurisdiction: bc-jurisdiction, canada-outside-bc, out-of-canada\ntiming: tight-deadline, short-deadline, medium-deadline, no-deadline\nother: price-sensitive, value-focused, flexible-budget\n\nInclude only tags that are clearly supported by the answers. Do not add explanations or any other text\u2014just the tags.\n\nnext_steps: A short paragraph (2\u20133 sentences) describing the most important next actions for the firm (for example, book consult, send specific checklists, confirm jurisdiction/conflicts).\n\nBe factual, neutral, and concise. Do NOT invent details that are not supported by the quiz answers. Do NOT address the client directly; this is for internal use only.\n\nReturn your answer as a valid JSON object with exactly these three string fields: intake_summary, flags, and next_steps."
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "provider_id": "Google",
+              "model_id": "Gemini 2.5 Flash"
+            }
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 362828907,
+          "root_id": 362825409,
+          "action": "get_completion",
+          "selected_api": "AICLIAPI@3.7.1",
+          "title": null,
+          "authentication_id": null,
+          "created_at": "2026-05-06T03:14:20+00:00",
+          "last_changed": "2026-05-06T08:12:02+00:00"
+        },
+        "362855389": {
+          "id": 362855389,
+          "account_id": 26461965,
+          "customuser_id": 26579923,
+          "paused": true,
+          "type_of": "write",
+          "params": {
+            "drive": "",
+            "spreadsheet": "1Q6FKGvoMha7car29Aug8tszailt2Ki-oieRZx2gGzOs",
+            "worksheet": "0",
+            "row": "{{362828988__id}}",
+            "COL$E": "{{=gives[\"362825409\"][\"email\"]}}",
+            "COL$L": "{{=gives[\"362825409\"][\"answer_4796438\"]}}",
+            "COL$M": "{{=gives[\"362825409\"][\"answer_4796439\"]}}",
+            "COL$N": "{{=gives[\"362825409\"][\"answer_4796440\"]}}",
+            "COL$O": "{{=gives[\"362825409\"][\"answer_4796446\"]}}",
+            "COL$P": "{{=gives[\"362825409\"][\"answer_4796447\"]}}",
+            "COL$Q": "{{=gives[\"362825409\"][\"answer_4796445\"]}}",
+            "COL$R": "{{=gives[\"362825409\"][\"answer_4796448\"]}}",
+            "COL$V": "{{=gives[\"362825409\"][\"answer_4796449\"]}}",
+            "COL$W": "{{=gives[\"362825409\"][\"total_score_percent\"]}}",
+            "COL$X": "{{=gives[\"362825409\"][\"total_score_tier\"]}}",
+            "COL$J": "Stage 2 completed",
+            "COL$S": "{{=gives['362830248'][\"AIsummary\"]}}",
+            "COL$T": "{{=gives['362830248'][\"AIFlag\"]}}",
+            "COL$U": "{{=gives['362830248'][\"NextStep\"]}}"
+          },
+          "meta": {
+            "$editor": {
+              "has_automatic_issues": false
+            },
+            "parammap": {
+              "spreadsheet": "PARR_CRM",
+              "worksheet": "Sheet1"
+            },
+            "stepTitle": "Copy: Update Spreadsheet Row in Google Sheets"
+          },
+          "triple_stores": {
+            "copied_from": null,
+            "created_by": null,
+            "polling_interval_override": 0,
+            "block_and_release_limit_override": 0,
+            "spread_tasks": 1
+          },
+          "folders": null,
+          "parent_id": 362830248,
+          "root_id": 362825409,
+          "action": "update_row",
+          "selected_api": "GoogleSheetsV2CLIAPI@2.12.0",
+          "title": "Copy: Update Spreadsheet Row in Google Sheets",
+          "authentication_id": 62220139,
+          "created_at": "2026-05-06T08:11:09+00:00",
+          "last_changed": "2026-05-06T08:12:02+00:00"
+        }
+      }
+    }
+  ]
+}

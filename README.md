@@ -1,4 +1,4 @@
-# Parr Law Intake Automation
+# Law Firm Intake Automation
 
 A two-stage automated client intake system for law firms, combining a simple HTML form, ScoreApp readiness quiz, and AI-powered triage to streamline client onboarding and internal case preparation.
 
